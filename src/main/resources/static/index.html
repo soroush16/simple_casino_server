@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yolo Online Casino</title>
+  <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/main.css" rel="stylesheet">
+  <script src="/webjars/jquery/jquery.min.js"></script>
+  <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+  <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+  <script src="/app.js"></script>
+  <style>
+    .right-align {
+      display: flex;
+      justify-content: flex-end;
+    }
+  </style>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+  enabled. Please enable
+  Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="connect">Casino connection:</label>
+          <button id="connect" class="btn btn-default" type="submit">Connect</button>
+          <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="bet">What is your bet amount?</label>
+          <input type="text" id="bet" class="form-control" [(ngModel)]="playerMessage.bet" placeholder="Enter your bet here...">
+          <div class="error-message" id="bet-error"></div> <!-- Add error message element -->
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6 right-align">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="number">What is your number?</label>
+          <input type="text" id="number" class="form-control" [(ngModel)]="playerMessage.number" placeholder="Enter Your number here...">
+          <div class="error-message" id="number-error"></div> <!-- Add error message element -->
+          <button id="send" class="btn btn-default" type="submit">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table id="conversation" class="table table-striped">
+        <thead>
+        <tr>
+          <th>Results</th>
+        </tr>
+        </thead>
+        <tbody id="results">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Error Message Modal -->
+<div class="modal fade" id="errorMessageModal" tabindex="-1" role="dialog" aria-labelledby="errorMessageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorMessageModalLabel">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="errorMessage"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
