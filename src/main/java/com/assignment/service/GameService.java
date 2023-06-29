@@ -18,7 +18,7 @@ public class GameService {
             win = (playerMessage.getBet()) * (99.0 / (100.0 - playerMessage.getNumber()));
         }
         if(win==0){
-            result = new Result("you lost",Optional.empty());
+            result = new Result("you lost",null);
         }else{
             result = new Result("Win", Optional.of(win));
         }

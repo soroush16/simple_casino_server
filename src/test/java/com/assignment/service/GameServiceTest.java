@@ -23,7 +23,7 @@ class GameServiceTest {
         Result result = gameServiceStub.playGameLogic(playerMessage);
         // Then
         assertEquals("win", result.getTitle());
-        assertTrue(result.getWin() > 0);
+        assertTrue(result.getWin().get() > 0);
         assertEquals(82.5, result.getWin());
     }
 
