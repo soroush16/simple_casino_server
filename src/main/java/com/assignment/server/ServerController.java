@@ -22,9 +22,8 @@ public class ServerController {
 
     @MessageMapping("/process-message")
     @SendToUser("/queue/reply")
-    public Result processMessage(@Valid PlayerMessage playerMessage) throws Exception {
-        Result result = gameService.playGameLogic(playerMessage);
-        return result;
+    public Result processMessage(@Valid PlayerMessage playerMessage) {
+        return gameService.playGameLogic(playerMessage);
     }
 
     @MessageExceptionHandler
